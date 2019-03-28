@@ -1,0 +1,7 @@
+- zdefiniowanie miar i okresów,
+- zdefiniowanie przyczyn pracowitych okresów (miar),
+- analiza otrzymanych wyników i wybranie najbardziej pracowitego okresu,
+- stworzenie listy zapytań,
+- wrzucenie pliku SQL na github,
+- wizualizacja wnioskow,
+- rekomendacje
