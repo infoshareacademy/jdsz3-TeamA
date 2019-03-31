@@ -1,17 +1,9 @@
 create table KALENDARZ AS (
 select generate_series(
-           (date '2013-01-01'),
-           (date '2018-12-31'),
+           (date '2014-01-01'),
+           (date '2017-12-31'),
            interval '1 day'
-         ) as DATY);
-
-select
-       max(data_wysylki),
-       min(data_wysylki)
-from analiza_operatora;
-
-select k.daty
-from KALENDARZ k
+         )::date as DATY);
 
 WITH KALENDARZ AS (
     SELECT * FROM KALENDARZ
@@ -19,16 +11,17 @@ WITH KALENDARZ AS (
 WNIOSKI AS (
 select
        W.ID,
-       AW.data_utworzenia,
-       AW.data_zakonczenia
+       W.data_utworzenia::date,
+       AW.data_zakonczenia::date
 from wnioski_poprawne w
 join analizy_wnioskow aw
 on w.id = aw.id_wniosku)
 
-SELECT *,
-       TRUNC(W.data_utworzenia, 'DAY')
+SELECT daty as data, count(distinct w.id)
 FROM KALENDARZ K
 LEFT JOIN WNIOSKI W
 ON K.DATY >= W.data_utworzenia
 AND K.DATY <= W.data_zakonczenia
-WHERE ID = 37082
+where to_char(daty, 'YYYY') = '2014'
+group by 1
+order by 1 desc
