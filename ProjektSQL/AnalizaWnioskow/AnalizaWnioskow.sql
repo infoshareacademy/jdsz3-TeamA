@@ -77,3 +77,11 @@ from (
          group by extract(hour from w.data_utworzenia)
      ) d1
 ;
+
+--wnioski po dacie utworzenia
+select cast(w.data_utworzenia as date) data_utworzenia,
+       count(w.id)   as liczba_wnioskow
+from wnioski_poprawne w
+left join analizy_wnioskow aw on w.id = aw.id_wniosku
+where extract(year from w.data_utworzenia) <> 2018
+group by cast(w.data_utworzenia as date)
