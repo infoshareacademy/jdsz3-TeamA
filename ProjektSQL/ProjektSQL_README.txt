@@ -11,4 +11,4 @@ ZAKRES DANYCH
 - TYLKO WNIOSKI Z OKRESU OD POCZATKU 2014 DO KONCA 2018 ROKU
 
 Link do Tableau
-https://public.tableau.com/views/ProjektSQL-Zczasem/Sheet1?:embed=y&:display_count=yes&publish=yes
+https://public.tableau.com/profile/witold.lancucki#!/vizhome/ProjektSQL-Zczasem/Rokmiesiac?publish=yes
