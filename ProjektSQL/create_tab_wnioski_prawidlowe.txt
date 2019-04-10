@@ -1,0 +1,9 @@
+/*to polecenie buduje tablice ktora ogranicza wnioski tylko do takich gdzie data zakonczenia analizy wniosku jest wieksza
+niz data utworzenia wniosku z tablicy wniosku*/
+
+create table wnioski_poprawne
+as
+select w.*
+from wnioski w
+         left join analizy_wnioskow aw on aw.id_wniosku = w.id
+where aw.data_zakonczenia>w.data_utworzenia;
