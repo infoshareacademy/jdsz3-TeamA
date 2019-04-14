@@ -58,12 +58,14 @@ order by 1 desc;
 
 
 --Liczba wnioskow wg dni tygodnia
-select distinct
+/*select distinct
        dzien_tygodnia,
        sum(LiczbaWnioskow) over (partition by DZIEN_TYGODNIA) as LiczbaWnioskow,
        100 * ROUND ((sum(LiczbaWnioskow) over (partition by DZIEN_TYGODNIA))
                 / (sum(LiczbaWnioskow) over ()),2) AS "%Total"
 from AO_Cnt
 order by 1;
+*/
+
 --Wiecej wnioskow pojawia sie w dni pracujace pon-pt niz w weekend, ale zaden dzien pracujacy nie jest wyrozniony
 
