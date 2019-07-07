@@ -1,1 +1,0 @@
-# jdsz3-zczasem
