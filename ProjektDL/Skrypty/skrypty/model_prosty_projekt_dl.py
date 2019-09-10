@@ -22,7 +22,7 @@ def create_model(params):
     model.add(MaxPool2D(pool_size=(2, 2))),
     #model.add(Dropout(params.drop_rate)),
 
-    model.add(Conv2D(filters=32, kernel_size=(4, 4), activation='relu')),
+    model.add(Conv2D(filters=64, kernel_size=(4, 4), activation='relu')),
     model.add(MaxPool2D(pool_size=(2, 2))),
     #model.add(Dropout(params.drop_rate)),
 
@@ -95,27 +95,27 @@ def main(params):
     train_model(model, train_generator, validation_generator, params)
     log.info("Training finished!")
 
-    model.save_weights(params.save_path)
+    model.save(params.save_path)
     log.info("Saved weights to: %s", params.save_path)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('--train_data_dir', type=str, default=r'C:\Users\irekt\Desktop\ProjektDL\oregon_wildlife\train',
+    parser.add_argument('--train_data_dir', type=str, default=r'.\oregon_wildlife\train',
                         help="Path to directory with training data.")
     parser.add_argument('--nb_train_samples', type=int, default=12013,
                         help="Number of training samples.")
-    parser.add_argument('--val_data_dir', type=str, default=r'C:\Users\irekt\Desktop\ProjektDL\oregon_wildlife\validation',
+    parser.add_argument('--val_data_dir', type=str, default=r'.\oregon_wildlife\validation',
                         help="Path to directory with test data.")
     parser.add_argument('--nb_val_samples', type=int, default=2000,
                         help="Number of test samples.")
-    parser.add_argument('--img_height', type=int, default=150,
+    parser.add_argument('--img_height', type=int, default=200,
                         help="Images will be resized to this height.")
-    parser.add_argument('--img_width', type=int, default=150,
+    parser.add_argument('--img_width', type=int, default=200,
                         help="Images will be resized to this width.")
     parser.add_argument('--epochs', type=int, default=50,
                         help="Epochs of training.")
-    parser.add_argument('--batch_size', type=int, default=16,
+    parser.add_argument('--batch_size', type=int, default=32,
                         help="Batch size.")
     parser.add_argument('--workers', type=int, default=4,
                         help="Maximum number of that will execute the generator.")
@@ -127,9 +127,9 @@ if __name__ == "__main__":
                         help="Shear intensity (angle) in counter-clockwise direction in degrees.")
     parser.add_argument('--zoom_range', type=float, default=0.2,
                         help="Range for random zoom: [1 - zoom_range, 1 + zoom_range].")
-    parser.add_argument('--log_dir', type=str, default=r'C:\Users\irekt\Desktop\ProjektDL\logs',
+    parser.add_argument('--log_dir', type=str, default=r'.\logs',
                         help="Where to save TensorBoard logs.")
-    parser.add_argument('--save_path', type=str, default=r'C:\Users\irekt\Desktop\ProjektDL\model\model_ProjektDL.h5',
+    parser.add_argument('--save_path', type=str, default=r'.\model\model_ProjektDL.h5',
                         help="Where to save model weights after training.")
     parser.add_argument('--resume_run', action='store_const', const=True, default=False,
                         help='Load the model weights and continue training.')
