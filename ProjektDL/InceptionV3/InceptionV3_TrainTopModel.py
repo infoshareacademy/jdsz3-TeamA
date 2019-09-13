@@ -61,7 +61,7 @@ def main(params):
                           params)
     
     json.dump(history.history, open(params.metrics_path, 'w'))
-    model.save_weights(params.save_path)
+    model.save(params.save_path)
 
 
 if __name__ == "__main__":
@@ -70,7 +70,7 @@ if __name__ == "__main__":
                         help="Number of training samples.")
     parser.add_argument('--nb_val_samples', type=int, default=1984,
                         help="Number of test samples.")
-    parser.add_argument('--epochs', type=int, default=50,
+    parser.add_argument('--epochs', type=int, default=100,
                         help="Epochs of training.")
     parser.add_argument('--batch_size', type=int, default=16,
                         help="Batch size.")
@@ -78,11 +78,11 @@ if __name__ == "__main__":
                         help="RMSprop learning rate.")
     parser.add_argument('--drop_rate', type=float, default=0.5,
                         help="Dense layer dropout rate.")
-    parser.add_argument('--log_dir', type=str, default='logs/fc',
+    parser.add_argument('--log_dir', type=str, default='InceptionV3Logs',
                         help="Where to save TensorBoard logs.")
-    parser.add_argument('--metrics_path', type=str, default='fc_metrics.json',
+    parser.add_argument('--metrics_path', type=str, default='InceptionV3_metrics.json',
                         help="Where to save json with metrics after training.")
-    parser.add_argument('--save_path', type=str, default='fc_model.h5',
+    parser.add_argument('--save_path', type=str, default='InceptionV3.h5',
                         help="Where to save model weights after training.")
     parser.add_argument('--resume_run', action='store_const', const=True, default=False,
                         help='Load the model weights and continue training.')
